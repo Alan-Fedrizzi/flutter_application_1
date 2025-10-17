@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../theme/colors.dart';
 import 'tp_button_solid_style.dart';
 
 class TpButtonSolid extends StatelessWidget {
@@ -42,6 +41,64 @@ class TpButtonSolid extends StatelessWidget {
       ),
       onPressed: tpDisabled ? null : onPressed,
       child: Text(text),
+      // funciona.. ver checkbox, está mais elegante..
+      /* style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.resolveWith<Color>((
+          Set<WidgetState> states,
+        ) {
+          if (states.contains(WidgetState.disabled)) {
+            return TpButtonSolidStyle.bgDisabled;
+            // return Colors.red;
+          }
+          if (states.contains(WidgetState.pressed)) {
+            return TpButtonSolidStyle.bgActive;
+            // return Colors.green;
+          }
+          if (states.contains(WidgetState.hovered)) {
+            return TpButtonSolidStyle.bgHover;
+            // return Colors.blue;
+          }
+          if (states.contains(WidgetState.focused)) {
+            return TpButtonSolidStyle.bgFocus;
+            // return Colors.yellow;
+          }
+          return TpButtonSolidStyle.bgDefault;
+        }),
+        foregroundColor: WidgetStateProperty.resolveWith<Color>((
+          Set<WidgetState> states,
+        ) {
+          if (states.contains(WidgetState.disabled)) {
+            return TpButtonSolidStyle.fgDisabled;
+            // return Colors.yellow;
+          }
+          if (states.contains(WidgetState.pressed)) {
+            return TpButtonSolidStyle.fgActive;
+            // return Colors.red;
+          }
+          if (states.contains(WidgetState.hovered)) {
+            return TpButtonSolidStyle.fgHover;
+            // return Colors.green;
+          }
+          if (states.contains(WidgetState.focused)) {
+            return TpButtonSolidStyle.fgFocus;
+            // return Colors.blue;
+          }
+          return TpButtonSolidStyle.fgDefault;
+        }),
+        overlayColor: WidgetStateProperty.resolveWith<Color?>((
+          Set<WidgetState> states,
+        ) {
+          if (states.contains(WidgetState.pressed)) {
+            return TpButtonSolidStyle.ripple;
+            // return Colors.blue;
+          }
+          if (states.contains(WidgetState.hovered)) {
+            return TpButtonSolidStyle.ripple;
+            // return Colors.green;
+          }
+          return null; // fallback to default ripple if not set
+        }),
+      ), */
     );
   }
 }

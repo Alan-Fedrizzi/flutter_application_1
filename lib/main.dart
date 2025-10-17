@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/theme/colors.dart';
-// import 'package:flutter_application_1/theme/colors.dart';
 import 'theme/app_theme.dart';
 
 import 'widgets/tp_button_solid/tp_button_solid.dart';
 import 'widgets/tp_checkbox/tp_checkbox.dart';
+import 'widgets/tp_sheet/tp_sheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,83 +85,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       top: Radius.circular(16),
                     ),
                   ),
-                  builder: (BuildContext context) {
-                    return SizedBox(
-                      height: 400, // adjust as needed
-                      child: Column(
-                        children: [
-                          // ===== HEADER =====
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Sheet Title',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.close),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Divider(height: 1),
-
-                          // ===== SCROLLABLE CONTENT =====
-                          Expanded(
-                            child: SingleChildScrollView(
-                              padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: List.generate(
-                                  20,
-                                  (index) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8,
-                                    ),
-                                    child: Text('Item ${index + 1}'),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          // ===== FOOTER =====
-                          Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TpButtonSolid(
-                                    onPressed: () => Navigator.pop(context),
-                                    text: 'Cancel',
-                                  ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: TpButtonSolid(
-                                    onPressed: () {
-                                      // Perform action
-                                      Navigator.pop(context);
-                                    },
-                                    text: 'Confirm',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                  builder: (context) => AdaptiveBottomSheet(
+                    title: "Example Sheet",
+                    content: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: List.generate(
+                        20,
+                        (index) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Text('Item ${index + 1}'),
+                        ),
                       ),
-                    );
-                  },
+                    ),
+                    cancelText: "Dismiss",
+                    confirmText: "Save",
+                    onConfirm: () {
+                      // Custom confirm action
+                      Navigator.pop(context);
+                    },
+                  ),
                 );
               },
             ),
